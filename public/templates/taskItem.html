@@ -1,0 +1,37 @@
+<!-- var taskElement=document.createElement("div");
+		taskElement.className="task-box";
+		var taskHeadStatus=document.createElement("div");
+		taskHeadStatus.className="task-head-status";
+		var heading=document.createElement("p");
+		heading.innerHTML=this.name;
+		var button=document.createElement("button");
+		button.className="status-button";
+		button.addEventListener("click",showDropdown);
+		button.innerHTML=this.status;
+		button.style.color="black";  // Do it white afterwards
+		if(this.status === 'On Hold'){
+			taskElement.style.borderLeft="1px solid blue";
+			button.style.backgroundColor = "blue";
+		}
+		else if(this.status === 'In Process'){
+			taskElement.style.borderLeft="1px solid yellow";
+			button.style.backgroundColor = "yellow";
+		}
+		if(this.status === 'Sent'){
+			taskElement.style.borderLeft="1px solid red";
+			button.style.backgroundColor = "red";
+		}
+		taskHeadStatus.appendChild(heading);
+		taskHeadStatus.appendChild(button);
+		var descrip=document.createElement("p");
+		descrip.innerHTML=this.desc;
+		taskElement.appendChild(taskHeadStatus);
+		taskElement.appendChild(descrip);
+		return taskElement -->
+<div class="task-box">
+	<div  class="task-head-status">
+		<p>{{task.name}}</p>
+		<button class="status-button">{{task.status}}</button>
+	</div>
+	<p>{{task.desc}}</p>
+</div>

@@ -1,0 +1,35 @@
+ <div id="overlay-initial" class="hoverable">
+    <div id="form-head">
+        <h6 id="add-project-head">Create Project</h6>
+        <div id="cross">X</div>
+    </div>
+    <div class="pad-vertical">
+    </div>
+    <form action="#" id="form-project" method="post" name="form">
+        <h7>Title</h7>
+        <div id="form-title">
+            <input id="title" name="title" placeholder="Task Title" type="text">
+        </div>
+        <br>
+        <h7>Description</h7>
+        <div id="form-desc">
+            <textarea id="desc" name="desc" placeholder="Start Typing...." type="text"></textarea>
+        </div>
+        <br>
+        <h7>Members</h7>
+        <div id="form-dropdown">
+            <select id="members-number" name="members">
+                <option value="" selected style="color:gray">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+    </form>
+    <div class="pad-vertical"></div>
+    <div id="form-foot">
+        <a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
+        <a class="button" id="create-new-project">Create</a>
+    </div>
+</div>

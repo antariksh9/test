@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Test Page</title>
+		<link href="./public/materialize/css/materialize.min.css" rel="stylesheet">
+		<link href="./public/css/styling.css" rel="stylesheet">
+		<link href="./public/css/projectLanding.css" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+	</body>
+	<script id="taskManager" type="x-tmpl-mustache">
+		<header class="teal darken-1" id="header-page">
+			<div id="headname">
+					<h4 class="headStyle">{{head}}</h4>
+			</div>
+		</header>
+		<main class="main-part white" id="box-container">
+    		<div id="task-container" class="row">
+    		</div>
+		</main>
+	</script>
+	<script id="projectItemTile" type="x-tmpl-mustache">
+		<div class="col s4 m4 l4 mainProjectItem" data-id="{{project.id}}">
+			<div class="card white hoverable">
+				<div class="card-content black-text projectCard">
+					<span class="card-title">{{project.name}}</span>
+					<p class="card-text">{{project.desc}}</p>
+					<p class="member-info card-text-members">Total Members : {{project.members.length}}</p>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="creatProjectItemTile" type="x-tmpl-mustache">
+		<div id="overlay" class="col s4 m4 l4">
+			<div class="card white hoverable">
+				<div class="flexBox projectCard" >
+					<i class="small material-icons">note_add</i>
+					<h6>Create New Project</h6>
+				</div>
+			</div> 
+		</div>
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js" type="text/javascript"></script>
+	<script src="/public/app.js" type="text/javascript"></script>
+</html>
