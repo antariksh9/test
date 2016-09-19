@@ -15,6 +15,11 @@
 			template: $('#projectLanding')
 				.html(),
 
+			events: {
+
+				'click div#cross-head': 'goToHome'
+			},
+
 			render: function() {
 				var _this = this,
 					$el = _this.$el,
@@ -82,11 +87,10 @@
 										});
 
 										_.each(projectItem.members, function(member) {
-											//console.log(member);
 											var $addTaskItem = new window.modules.AddTaskItemView({
 													member: member,
-													data:data,
-													project:projectItem
+													data: data,
+													project: projectItem
 												})
 												.render()
 												.$el;
@@ -97,6 +101,11 @@
 									});
 						});
 				return _this;
+			},
+
+			goToHome: function() {
+				window.history.pushState("", "", "/");
+				Backbone.history.loadUrl("");
 			}
 
 

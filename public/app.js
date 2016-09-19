@@ -1,6 +1,6 @@
-(function ($) {
+(function($) {
 	var $body = $('.app-container'),
-		initData = function () {
+		initData = function() {
 			var projects = [
 					{
 						"id": "p1",
@@ -99,12 +99,13 @@
 			}
 		},
 
-		renderAppView = function (url, viewKey, data) {
-			$.getScript(url, function () {
+		renderAppView = function(url, viewKey, data) {
+			$.getScript(url, function() {
 				var view = new modules[viewKey]({
 					data: data
 				});
-				$body.html(view.render().$el);
+				$body.html(view.render()
+					.$el);
 			})
 		};
 
@@ -115,21 +116,21 @@
 			"": "homeRoute"
 		}
 	});
-	if(!window.check){
-		window.check=0;
+	if (!window.check) {
+		window.check = 0;
 	}
-	 var modules = window.modules = {};
-	if(window.check==0){
-		window.data=initData();
+	var modules = window.modules = {};
+	if (window.check == 0) {
+		window.data = initData();
 	}
-	window.functions = {} ;
-	window.functions.addEventsButtons = function (e) {
+	window.functions = {};
+	window.functions.addEventsButtons = function(e) {
 
-			e.target.parentNode.parentNode.style.display="none";
+		e.target.parentNode.parentNode.style.display = "none";
 
 	};
 
-	$.loadScript = function (url, callback) {
+	$.loadScript = function(url, callback) {
 		return $.ajax({
 			url: url,
 			dataType: 'script',
@@ -138,25 +139,23 @@
 		});
 	};
 
-	(function () {
+	(function() {
 		var appRouter = new AppRouter(),
 			data = window.data;
 
 
-		appRouter.on('route:projectRoute', function () {
+		appRouter.on('route:projectRoute', function() {
 			renderAppView('/public/views/projectLandingView.js', 'ProjectLandingView', data);
 		});
-		appRouter.on('route:homeRoute', function () {
+		appRouter.on('route:homeRoute', function() {
 			renderAppView('/public/views/taskManagerView.js', 'TaskManagerView', data);
 		});
-		if(window.check==1){
-		console.log(window.location.hash);
-		Backbone.history.loadUrl(window.location.hash.split("#")[1]);
+		if (window.check == 1) {
+			Backbone.history.loadUrl(window.location.hash.split("#")[1]);
 		}
-		if(window.check==0){
-			window.check=1;
-			Backbone.history.start({
-			});
+		if (window.check == 0) {
+			window.check = 1;
+			Backbone.history.start({});
 		}
 	})()
 
