@@ -77,6 +77,15 @@
 			<p>{{task.desc}}</p>
 		</div>
 	</script>
+	<script id="dropDownList" type="x-tmpl-mustache">
+		<ul id='dropdown-status'class={{class}}>
+            <li class="status" value="Done">Done</li>
+            <li  class="status" value="On Hold">On Hold</li>
+            <li class="status" value="In Process">In Process</li>
+            <li class="status" value="Sent">Sent</li>
+            <li class="status" value="Schedule">Schedule</li>
+        </ul>  
+	</script>
 	<script id="addProjectForm" type="x-tmpl_mustache">
 	 <div id="overlay-initial" class="hoverable">
 	    <div id="form-head">

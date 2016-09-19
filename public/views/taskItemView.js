@@ -23,6 +23,12 @@
 				div1.innerHTML=render;
 				status=$(div1).find("div.task-box button.status-button")[0].innerHTML;
 				button=$(div1).find("div.task-box button.status-button")[0];
+				$(button).on("click",function(){
+					$.getScript("/public/views/dropDownListView.js",function(){
+						$item = new window.modules.DropDownListView({parent:button,task:task}).render().$el;
+						$('body').append($item);
+					})
+				});
 				taskElement=$(div1).find("div.task-box")[0];
 				if(status === 'On Hold'){
 					taskElement.style.borderLeft="1px solid blue";

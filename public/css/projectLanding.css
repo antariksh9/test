@@ -35,7 +35,7 @@
 	border:1px solid darkgreen;
 }
 #dropdown-status{
-	display:none;
+	display:absolute;
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-direction: column;
