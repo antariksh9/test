@@ -15,10 +15,28 @@
 			render: function () {
 				var _this = this,
 					$el = _this.$el,
-					task = _this.task.task;
+					task = _this.task.task,
+					render,div1,status,button,taskElement;
 
-				$el.append(Mustache.render(_this.template, {task : task}));
-				
+				render=Mustache.render(_this.template, {task : task});
+				div1=document.createElement('div');
+				div1.innerHTML=render;
+				status=$(div1).find("div.task-box button.status-button")[0].innerHTML;
+				button=$(div1).find("div.task-box button.status-button")[0];
+				taskElement=$(div1).find("div.task-box")[0];
+				if(status === 'On Hold'){
+					taskElement.style.borderLeft="1px solid blue";
+					button.style.backgroundColor = "blue";
+				}
+				else if(status === 'In Process'){
+					taskElement.style.borderLeft="1px solid yellow";
+					button.style.backgroundColor = "yellow";
+				}
+				if(status === 'Sent'){
+					taskElement.style.borderLeft="1px solid red";
+					button.style.backgroundColor = "red";
+				}
+				$el.append($(div1).find('.task-box'));
 				return _this;
 			}
 
