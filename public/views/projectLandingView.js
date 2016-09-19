@@ -1,49 +1,107 @@
-// projectLandingView=function(projectData,projects,members,tasks){
-// 	var rendered,url,index,currentProject;
-// 	url=window.location.href.split("/");
-// 	// url=url[url.length-1];
-// 	url="p1";
-// 	index=_.findIndex(projects,{"id":url});
-// 	currentProject=projects[index];
-// 	$.get("/public/templates/projectLanding.html",function(template){
-// 	  	rendered=Mustache.render(template,{"head":projects[index].name});
-// 	  	$(document.body).append(rendered);
-// 		$.getScript('/public/views/memberStreamView.js', function()
-// 		{
-// 			_.each(members,function(member){
-// 				if(_.contains(currentProject.members,member.id)){
-// 					memberStreamView(member,tasks);
-// 				}
-// 			});
+(function($, _, Backbone, Mustache) {
 
-// 		});
-// 	});
-// };
-var projectLandingView=Backbone.View.extend({
-	initialize : function(attr){
-		url=window.location.href.split("/");
-		url=url[url.length-1];
-		this.options=attr;
-		this.options.url=url;
-		this.options.index=_.findIndex(this.options.projects,{"id":this.options.url});
-		this.render();
-	},
-	render:function(){
-		var op=this;
-		currentProject=op.options.projects[op.options.index];
-		$.get("/public/templates/projectLanding.html",function(template){
-	  	rendered=Mustache.render(template,{"head":currentProject.name});
-	  	$(document.body).append(rendered);
-		$.getScript("/public/views/memberStreamView.js", function()
-		{
-			_.each(op.options.members,function(member){
-				if(_.contains(currentProject.members,member.id)){
-					new memberStreamView({"member":member,"tasks":op.options.tasks});
-				}
-			});
+	var BaseView = Backbone.View,
+
+		ProjectLandingView = BaseView.extend({
+
+			initialize: function(options) {
+				var _this = this;
+
+				BaseView.prototype.initialize.call(_this, options);
+
+				_this.data = options.data;
+			},
+
+			template: $('#projectLanding')
+				.html(),
+
+			render: function() {
+				var _this = this,
+					$el = _this.$el,
+					data = _this.data,
+					projectItem, url;
+				url = window.location.href.split("/");
+				url = url[url.length - 1];
+				_.each(data.projects, function(project) {
+					if (project.id == url) {
+						projectItem = project;
+					}
+				})
+
+				$el.append(Mustache.render(_this.template, {
+					head: projectItem.name
+				}));
+
+				$.when($.loadScript('/public/views/memberStreamView.js'), $.loadScript('/public/views/createMemberView.js'))
+					.then(
+						function(MemberStreamView, CreateMemberView) {
+
+							_.each(data.members, function(member) {
+
+								if (_.contains(projectItem.members, member.id)) {
+									var $Item = new window.modules.MemberStreamView({
+											member: member,
+											project: projectItem,
+											tasks: data.tasks
+										})
+										.render()
+										.$el;
+									$el.find("#main-task-container")
+										.append($Item.find(".member-div"));
+									$el.find("#main-task-container")
+										.append($Item.find(".dotted-intersection"));
+								}
+							});
+							var $createMember = new window.modules.CreateMemberView({
+									project: projectItem,
+									data: data
+								})
+								.render()
+								.$el;
+							$el.find("#main-task-container")
+								.append($createMember.find("#add-member"));
+							$el.find("#main-task-container")
+								.append($createMember.find(".dotted-intersection"));
+							$.when($.getScript('/public/views/taskItemView.js'), $.getScript('/public/views/addTaskItemView.js'))
+								.then(
+									function(TaskItemView, addTaskItemView) {
+										_.each(data.tasks, function(task) {
+											_.each(projectItem.members, function(member) {
+												if (task.project == projectItem.id && task.owner == member) {
+													var $item = new window.modules.TaskItemView({
+															task: task
+														})
+														.render()
+														.$el;
+													memberId = "#" + member;
+													$el.find(memberId)
+														.append($item.find(".task-box"));
+												}
+
+											})
+										});
+
+										_.each(projectItem.members, function(member) {
+											//console.log(member);
+											var $addTaskItem = new window.modules.AddTaskItemView({
+													member: member,
+													data:data,
+													project:projectItem
+												})
+												.render()
+												.$el;
+											memberId = "#" + member;
+											$el.find(memberId)
+												.append($addTaskItem.find('.addtask-box'));
+										});
+									});
+						});
+				return _this;
+			}
+
 
 		});
-		 
-		});
-	}
-});
+
+	window.modules.ProjectLandingView = ProjectLandingView;
+	return ProjectLandingView;
+})(jQuery, _, Backbone, Mustache);

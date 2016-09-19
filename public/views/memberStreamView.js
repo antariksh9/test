@@ -1,40 +1,41 @@
-// memberStreamView=function(member,tasks){
-	// var rendered;
-	// $.get("/public/templates/memberStream.html",function(template){
-	//   	rendered=Mustache.render(template,{"member":member});
-	//   	$("#main-task-container").append(rendered);
-	//   	$.getScript('/public/views/taskItemView.js', function()
-	// 	{
-	// 		_.each(tasks,function(task){
-	// 			if(task.owner==member.id){
-	// 				taskItemView(task,member);
-	// 			}
-	// 		});
+(function ($, _, Backbone, Mustache) {
 
-	// 	});
-	//  });
-// };
-var memberStreamView=Backbone.View.extend({
-	initialize:function(attr){
-		this.options=attr;
-		this.render();
-	},
-	render : function(){
-		var op=this;
-		$.get("/public/templates/memberStream.html",function(template){
+	var BaseView = Backbone.View,
 
-		  	rendered=Mustache.render(template,{"member":op.options.member});
-		  	$("#main-task-container").append(rendered);
-		  	$.getScript('/public/views/taskItemView.js', function()
-			{
-				_.each(op.options.tasks,function(task){
-					if(task.owner==op.options.member.id){
-						new taskItemView({"task":task,"parent":op.options.member});
-					}
-				});
+		MemberStreamView = BaseView.extend({
+
+			initialize: function (options) {
+				var _this = this;
+
+				BaseView.prototype.initialize.call(_this, options);
+				_this.data=options;
+			},
+
+			template: $('#memberStream').html(),
+
+			render: function () {
+				var _this = this,
+					$el = _this.$el,
+					member = _this.data.member,
+					project =  _this.data.project,
+					tasks=_this.data.tasks;
+
+				$el.append(Mustache.render(_this.template, {member : member}));
 				
+				return _this;
+			}
 
-			});
-		 });
-	}
-});
+			
+		});
+
+		window.modules.MemberStreamView = MemberStreamView; 
+
+})(jQuery, _, Backbone, Mustache);
+
+
+
+
+
+
+
+

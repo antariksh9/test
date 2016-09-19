@@ -34,33 +34,26 @@
 							function (ProjectItemView, CreateProjectView) {
 
 							_.each(data.projects, function (project) {
+								console.log("!");
 								var $Item = new window.modules.ProjectItemView({
 								project: project
 							}).render().$el;
 							// $items = $items.add($Item);
-							$el.append($Item);
+							$el.find("#task-container").append($Item);
 						});
 
-						$el.append(new window.modules.CreateProjectView({}).render().$el);
+						$el.find("#task-container").append(new window.modules.CreateProjectView({data:data}).render().$el);
 					})});
 
 				return _this;
 			},
 
 			onProjectClick: function (e) {
-				var projectId = $(e.target).data('id');
-
+				var projectId = $(e.currentTarget).attr('data-id');
 				window.history.pushState("", "", "/#/project/" + projectId);
-			}
+				$.getScript("/public/app.js");			}
 		});
 
 		window.modules.TaskManagerView = TaskManagerView; 
 	return TaskManagerView;
 })(jQuery, _, Backbone, Mustache);
-
-
-
-
-
-
-

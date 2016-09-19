@@ -1,5 +1,5 @@
 (function ($) {
-	var $body = $('body'),
+	var $body = $('.app-container'),
 		initData = function () {
 			var projects = [
 					{
@@ -92,7 +92,6 @@
 						"status": "Done"
 					}
 				];
-
 			return {
 				members: members,
 				tasks: tasks,
@@ -102,7 +101,6 @@
 
 		renderAppView = function (url, viewKey, data) {
 			$.getScript(url, function () {
-
 				var view = new modules[viewKey]({
 					data: data
 				});
@@ -117,9 +115,19 @@
 			"": "homeRoute"
 		}
 	});
+	if(!window.check){
+		window.check=0;
+	}
+	 var modules = window.modules = {};
+	if(window.check==0){
+		window.data=initData();
+	}
+	window.functions = {} ;
+	window.functions.addEventsButtons = function (e) {
 
-	var modules = window.modules = {};
+			e.target.parentNode.parentNode.style.display="none";
 
+	};
 
 	$.loadScript = function (url, callback) {
 		return $.ajax({
@@ -132,7 +140,8 @@
 
 	(function () {
 		var appRouter = new AppRouter(),
-			data = initData();
+			data = window.data;
+
 
 		appRouter.on('route:projectRoute', function () {
 			renderAppView('/public/views/projectLandingView.js', 'ProjectLandingView', data);
@@ -140,11 +149,15 @@
 		appRouter.on('route:homeRoute', function () {
 			renderAppView('/public/views/taskManagerView.js', 'TaskManagerView', data);
 		});
-
-		// what does this mean?
-		Backbone.history.start({
-			hashChange: true
-		});
+		if(window.check==1){
+		console.log(window.location.hash);
+		Backbone.history.loadUrl(window.location.hash.split("#")[1]);
+		}
+		if(window.check==0){
+			window.check=1;
+			Backbone.history.start({
+			});
+		}
 	})()
 
 })(jQuery);

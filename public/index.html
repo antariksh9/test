@@ -1,13 +1,15 @@
 <html>
 	<head>
 		<title>Test Page</title>
-		<link href="./public/materialize/css/materialize.min.css" rel="stylesheet">
-		<link href="./public/css/styling.css" rel="stylesheet">
-		<link href="./public/css/projectLanding.css" rel="stylesheet">
+		<link href="/public/materialize/css/materialize.min.css" rel="stylesheet">
+		<link href="/public/css/styling.css" rel="stylesheet">
+		<link href="/public/css/projectLanding.css" rel="stylesheet">
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<body>
-	</body>
+	<div class="app-container">
+
+	</div>
 	<script id="taskManager" type="x-tmpl-mustache">
 		<header class="teal darken-1" id="header-page">
 			<div id="headname">
@@ -18,6 +20,13 @@
     		<div id="task-container" class="row">
     		</div>
 		</main>
+	</script>
+	<script id="createMember" type="x_tmpl_mustache">
+		<div class="addMemberTile" id="add-member">
+			<h7>Add New Member</h7>
+		</div>
+		<div class="dotted-intersection">
+		</div>
 	</script>
 	<script id="projectItemTile" type="x-tmpl-mustache">
 		<div class="col s4 m4 l4 mainProjectItem" data-id="{{project.id}}">
@@ -30,16 +39,147 @@
 			</div>
 		</div>
 	</script>
-	<script id="creatProjectItemTile" type="x-tmpl-mustache">
-		<div id="overlay" class="col s4 m4 l4">
+	<script id="createProjectItemTile" type="x-tmpl-mustache">
+		<div id="overlay" class="col s4 m4 l4 clickAddForm">
 			<div class="card white hoverable">
 				<div class="flexBox projectCard" >
 					<i class="small material-icons">note_add</i>
 					<h6>Create New Project</h6>
 				</div>
-			</div> 
+			</div>
 		</div>
 	</script>
+	<script id="projectLanding" type="x-tmpl-mustache">
+		<header class="teal darken-1" id="header-page">
+	        <div id="headname">
+	            <h4 id="page-head">{{head}}</h4>
+	            <div id="cross-head" style="color:white ; float:right;">X</div>
+	        </div>
+		</header>
+		<main id="main-task-container">
+		    <div class="dotted-intersection do-not-remove">
+		    </div>
+		</main>	
+	</script>
+	<script id="memberStream" type="x-tmpl-mustache">
+		<div class="member-div" id="{{member.id}}">
+			<div class="add-member-actual">{{member.name}}</div>
+		</div>
+		<div class="dotted-intersection">
+		</div>
+	</script>
+	<script id="taskItem" type="x-tmpl-mustache">
+		<div class="task-box">
+			<div  class="task-head-status">
+				<p>{{task.name}}</p>
+				<button class="status-button">{{task.status}}</button>
+			</div>
+			<p>{{task.desc}}</p>
+		</div>
+	</script>
+	<script id="addProjectForm" type="x-tmpl_mustache">
+	 <div id="overlay-initial" class="hoverable">
+	    <div id="form-head">
+	        <h6 id="add-project-head">Create Project</h6>
+	        <div id="cross">X</div>
+		</div>
+    	<div class="pad-vertical">
+    	</div>
+    	<form action="#" id="form-project" method="post" name="form">
+	        <h7>Title</h7>
+	        <div id="form-title">
+	            <input id="title" name="title" placeholder="Task Title" type="text">
+	        </div>
+	        <br>
+	        <h7>Description</h7>
+	        <div id="form-desc">
+	            <textarea id="desc" name="desc" placeholder="Start Typing...." type="text"></textarea>
+	        </div>
+	        <br>
+	        <h7>Members</h7>
+	        <div id="form-dropdown">
+	            <select id="members-number" name="members">
+	                <option value="" selected style="color:gray">Select</option>
+	                <option value="1">1</option>
+	                <option value="2">2</option>
+	                <option value="3">3</option>
+	                <option value="4">4</option>
+	            </select>
+	        </div>
+    	</form>
+    	<div class="pad-vertical"></div>
+	    	<div id="form-foot">
+	        	<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
+	        <a class="button" id="create-new-project">Create</a>
+	    </div>
+	</div>
+	</script>
+	<script id="addMemberForm" type="x-tmpl_mustache">
+	 <div id="overlay-initial-member" class="hoverable">
+	    <div id="form-head">
+	        <h6 id="add-project-head">Create Member</h6>
+	        <div id="cross">X</div>
+		</div>
+    	<div class="pad-vertical">
+    	</div>
+    	<form action="#" id="form-project" method="post" name="form">
+	        <h7>Name</h7>
+	        <div id="form-title">
+	            <input id="title" name="title" placeholder="Task Title" type="text">
+	        </div>
+	        <br>
+    	</form>
+    	<div class="pad-vertical"></div>
+	    	<div id="form-foot">
+	        	<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
+	        <a class="button" id="create-new-project">Create</a>
+	    </div>
+	</div>
+	</script>
+	<script id="addTaskItem" type="x-tmpl-mustache">
+		<div class="addtask-box" data-id={{member}}>
+			<i class="small material-icons">note_add</i>
+			<h6>Create Task</h6>
+		</div>
+	</script>
+	<script id="addTaskForm" type="x-tmpl-mustache">
+		<div id="overlay-initial-task" class="hoverable">
+	    <div id="form-head">
+	        <h6 id="add-project-head">Add Task</h6>
+	        <div id="cross">X</div>
+		</div>
+    	<div class="pad-vertical">
+    	</div>
+    	<form action="#" id="form-project" method="post" name="form">
+	        <h7>Title</h7>
+	        <div id="form-title">
+	            <input id="title" name="title" placeholder="Task Title" type="text">
+	        </div>
+	        <br>
+	        <h7>Description</h7>
+	        <div id="form-desc">
+	            <textarea id="desc" name="desc" placeholder="Start Typing...." type="text"></textarea>
+	        </div>
+	        <br>
+	        <h7>Status</h7>
+	        <div id="form-dropdown">
+	            <select id="status" name="members">
+	                <option value="On Hold">On Hold</option>
+	                <option value="Drop">Drop</option>
+	                <option value="In Process">In Process</option>
+	                <option value="Sent">Sent</option>
+	                <option value="Scheduled">Scehduled</option>
+	            </select>
+	        </div>
+    	</form>
+    	<div class="pad-vertical"></div>
+	    	<div id="form-foot">
+	        	<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
+	        <a class="button" id="create-new-project">Create</a>
+	    </div>
+	</div>
+	</script>
+	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>

@@ -12,23 +12,19 @@
 				_this.project = options;
 			},
 
+			template: $('#projectItemTile').html(),
 
 			render: function () {
-
 				var _this = this,
 					$el = _this.$el,
-					project = _this.project;
-				template: this.$('#projectItemTile').html(),
+					project = _this.project.project;
+				
 				$el.append(Mustache.render(_this.template, {"project": project}));
-
 				return _this;
-			},
-
-
-			
+			}
 		});
 
-		window.modules.ProjectItemView = ProjectItemView; 
+		window.modules.ProjectItemView = ProjectItemView;
 
 })(jQuery, _, Backbone, Mustache);
 
