@@ -8,27 +8,71 @@ body {
         margin:0;
         padding: 0;
         border:0;
-        height :100vh;
-}
-#task-container{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-}
-.projectCard{
-    font-size : 15px;
-    font-weight: 300;
-
+        height :100%;
 }
 .mainProjectItem{
-    
+    position : relative;
+    height : 22%;
+    margin : 2% 4%;
+    width : 27% !important;
+    border : 1px #e9e9e9 solid !important;
 }
+.mainProjectItem1{
+    position : relative;
+    height : 22%;
+    margin : 2% 4%;
+    width : 27% !important;
+    border : 1px #e9e9e9 solid !important;
+}
+.mainProjectItem1:hover{
+    position : relative;
+    height : 22%;
+    margin : 2% 4%;
+    width : 27% !important;
+    color : rgba(0, 137, 123, 0.95) !important;
+    border : 1px rgba(0, 137, 123, 0.95) solid !important;
+}
+#create-new-project{
+    background-color : rgba(0, 137, 123, 0.95) !important;
+}
+#task-container{
+    display: inline-block;
+    padding:0 0 0 8%;
+    margin:auto;
+    width:100%;
+}
+#cardSetting{
+    padding:12px 4px 12px 10px;
+    font-weight : 400;
+}
+.row .col {
+    padding : 0 1px !important;
+}
+.projectCard{
+    display : flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    font-size : 15px;
+    font-weight: 300;
+    width : 100%;
+    height : 100%;
+    padding:0;
+
+}
+
 .headStyle{
     font-weight: 300;
-    font-size: 18px;
-    padding : 10px;
+    font-size: 20px;
+    padding : 12px 25px;
 }
+.app-container{
+    padding:0;
+    margin:0;
+    border:0;
+    height : 100%;
+}
+
 #headname {
     padding : 0px 10px 0 10px;
     width : 100%;
@@ -41,7 +85,6 @@ body {
     flex-direction:row;
 }
 #header-page {
-    margin : 2px ;
     display:flex;
     justify-content: flex-start;
     align-items: center;
@@ -57,30 +100,42 @@ h6 {
 #addOverlay:hover {
 }
 #box-container{
-    width :81%;
+    width :85%;
     margin:auto;
-    padding:10px 25px;
+    height : ;
+    padding:10px 30px;
     display:flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 .card{
-    height : auto;
+    height : 23%;
+    width : 40%;
     display: flex;
+    border : 1px #a8a8a8 solid;
+    box-sizing: border-box;
 
 }
 .col{
     border:20px;
 }
+#projectNameStyle{
+    color :black;
+    font-size: 17px;
+}
 .card-text{
     color: gray;
-    font-size: 12px;
+    font-size: 13px;
 }
 .card-text-members{
-    color: gray;
+    color: black;
     font-size: 12px;
-    font-weight: 400;
+}
+.card-title{
+    font-size: 18px;
+    color: black ;
+    font-family: "Roboto", sans-serif;
 }
 .card .card-content p.member-info{
     color:black;
@@ -93,7 +148,7 @@ h6 {
     position: fixed;
     top: 20%;
     left: 20%;
-    width: 30%;
+    width: 25%;
     height: auto;
     margin : auto;
     background-color: white;
@@ -116,7 +171,7 @@ h6 {
 }
 #add-project-head{
     padding :5%;
-}
+    font-size: 14px;}
 #cross{
     padding: 5%;
     cursor : pointer;
@@ -128,7 +183,7 @@ h6 {
     color : gray;   
 }
 #form-title{
-    border : 1px solid gray;
+    border : 1px solid #e9e9e9;
     width:100%;
     height : 15%;
     box-sizing: border-box;
@@ -139,7 +194,23 @@ h6 {
     align-items: center;
     flex-direction: column;
     margin: auto;
-    color : gray;
+    color : #d3d3d3;
+    height:100%;
+    width:100%;
+    font-size:12px;
+
+}
+.flexBox:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    color : rgba(0, 137, 123, 0.95) !important;
+    height:100%;
+    width:100%;
+    font-size:12px;
+
 }
 #form-head{
     display: flex;
@@ -167,23 +238,34 @@ h6 {
     align-items: center;
     justify-content: flex-end;
 }
+form#form-project h7{
+    font-size: 12px;
+}
+div#form-foot .button{
+    width :30%;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
 #form-desc{
-    border : 1px solid gray;
+    border : 1px solid #e9e9e9;
     width:100%;
     height : 25%;
     box-sizing: border-box;
 }
 #form-project{
-    padding: 10%;
+    padding: 7% 7% 0 7%;
 }
 #form-project-member{
     padding: 10%;
 }
 #form-dropdown{
-    border : 1px solid gray;
+    border : 1px solid #e9e9e9;
     width: 100%;
     height:auto;
     box-sizing: border-box;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 #title{
     padding : 2%;
@@ -220,7 +302,16 @@ h6 {
     width:100%;
     height : 1px;
 }
+.pad-vertical1{
+    background-color: #e4e4e4;
+    width:100%;
+    height : 1px;   
+}
+textarea#desc{
+    resize:none;
+}
 #members-number{
     padding : 2%;
     display:block;
+    font-size: 12px;
 }

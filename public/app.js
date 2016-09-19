@@ -129,7 +129,11 @@
 		e.target.parentNode.parentNode.style.display = "none";
 
 	};
+	window.functions.addCancelEventsButtons = function(e) {
 
+		e.target.parentNode.parentNode.parentNode.style.display = "none";
+
+	};
 	$.loadScript = function(url, callback) {
 		return $.ajax({
 			url: url,

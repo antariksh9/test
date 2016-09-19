@@ -32,23 +32,19 @@
 	</script>
 	<script id="projectItemTile" type="x-tmpl-mustache">
 		<div class="col s4 m4 l4 mainProjectItem" data-id="{{project.id}}">
-			<div class="card white hoverable">
-				<div class="card-content black-text projectCard">
-					<span class="card-title">{{project.name}}</span>
+				<div class="card-content black-text projectCard" id="cardSetting">
+					<span class="card-title" id="projectNameStyle">{{project.name}}</span>
 					<p class="card-text">{{project.desc}}</p>
 					<p class="member-info card-text-members">Total Members : {{project.members.length}}</p>
 				</div>
-			</div>
 		</div>
 	</script>
 	<script id="createProjectItemTile" type="x-tmpl-mustache">
-		<div id="overlay" class="col s4 m4 l4 clickAddForm">
-			<div class="card white hoverable">
-				<div class="flexBox projectCard">
+		<div id="overlay" class="col s4 m4 l4 clickAddForm mainProjectItem1" >
+				<div class="flexbox">
 					<i class="small material-icons">note_add</i>
 					<h6>Create New Project</h6>
 				</div>
-			</div>
 		</div>
 	</script>
 	<script id="projectLanding" type="x-tmpl-mustache">
@@ -94,12 +90,12 @@
 				<h6 id="add-project-head">Create Project</h6>
 				<div id="cross">X</div>
 			</div>
-			<div class="pad-vertical">
+			<div class="pad-vertical1">
 			</div>
 			<form action="#" id="form-project" method="post" name="form">
 				<h7>Title</h7>
 				<div id="form-title">
-					<input id="title" name="title" placeholder="Task Title" type="text">
+					<input id="title" name="title" placeholder="Project Title" type="text">
 				</div>
 				<br>
 				<h7>Description</h7>
@@ -110,7 +106,7 @@
 				<h7>Members</h7>
 				<div id="form-dropdown">
 					<select id="members-number" name="members">
-	                <option value="" selected style="color:gray">Select</option>
+	                <option value="" selected style="color:#e9e9e9;">Select</option>
 	                <option value="1">1</option>
 	                <option value="2">2</option>
 	                <option value="3">3</option>
@@ -118,7 +114,7 @@
 	            </select>
 				</div>
 			</form>
-			<div class="pad-vertical"></div>
+			<div class="pad-vertical1"></div>
 			<div id="form-foot">
 				<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
 				<a class="button" id="create-new-project">Create</a>
@@ -131,16 +127,16 @@
 				<h6 id="add-project-head">Create Member</h6>
 				<div id="cross">X</div>
 			</div>
-			<div class="pad-vertical">
+			<div class="pad-vertical1">
 			</div>
 			<form action="#" id="form-project" method="post" name="form">
 				<h7>Name</h7>
 				<div id="form-title">
-					<input id="title" name="title" placeholder="Task Title" type="text">
+					<input id="title" name="title" placeholder="Member Name" type="text">
 				</div>
 				<br>
 			</form>
-			<div class="pad-vertical"></div>
+			<div class="pad-vertical1"></div>
 			<div id="form-foot">
 				<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
 				<a class="button" id="create-new-project">Create</a>
@@ -156,10 +152,10 @@
 	<script id="addTaskForm" type="x-tmpl-mustache">
 		<div id="overlay-initial-task" class="hoverable">
 			<div id="form-head">
-				<h6 id="add-project-head">Add Task</h6>
+				<h6 id="add-project-head">Create Task</h6>
 				<div id="cross">X</div>
 			</div>
-			<div class="pad-vertical">
+			<div class="pad-vertical1">
 			</div>
 			<form action="#" id="form-project" method="post" name="form">
 				<h7>Title</h7>
@@ -183,7 +179,7 @@
 	            </select>
 				</div>
 			</form>
-			<div class="pad-vertical"></div>
+			<div class="pad-vertical1"></div>
 			<div id="form-foot">
 				<a class="button" style="color:black; background-color: white; border: 1px solid gray" id="cancel-project">Cancel</a>
 				<a class="button" id="create-new-project">Create</a>

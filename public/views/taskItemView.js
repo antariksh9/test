@@ -28,6 +28,7 @@
 					.find("div.task-box button.status-button")[0].innerHTML;
 				button = $(div1)
 					.find("div.task-box button.status-button")[0];
+
 				$(button)
 					.on("click", function() {
 						$.getScript("/public/views/dropDownListView.js", function() {
@@ -43,16 +44,18 @@
 					});
 				taskElement = $(div1)
 					.find("div.task-box")[0];
-				if (status === 'On Hold') {
-					taskElement.style.borderLeft = "1px solid blue";
-					button.style.backgroundColor = "blue";
+				if (status === 'Schedule') {
+					taskElement.style.borderLeft = "2px solid #DAA520";
+					button.style.backgroundColor = "#DAA520";
 				} else if (status === 'In Process') {
-					taskElement.style.borderLeft = "1px solid yellow";
-					button.style.backgroundColor = "yellow";
-				}
-				if (status === 'Sent') {
-					taskElement.style.borderLeft = "1px solid red";
+					taskElement.style.borderLeft = "2px solid darkgray";
+					button.style.backgroundColor = "darkgray";
+				} else if (status === 'Sent') {
+					taskElement.style.borderLeft = "2px solid red";
 					button.style.backgroundColor = "red";
+				} else if (status === 'Done') {
+					taskElement.style.borderLeft = "2px solid black";
+					button.style.backgroundColor = "black";
 				}
 				$el.append($(div1)
 					.find('.task-box'));

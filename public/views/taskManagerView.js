@@ -28,10 +28,6 @@
 					"head": "Task Management"
 				}));
 
-				// $.when(
-				// 		$.getScript('/public/views/projectItemView.js'),
-				// 		$.getScript('/public/views/createProjectView.js')
-				// 	).then(
 				$.getScript('/public/views/projectItemView.js', function() {
 					$.getScript('/public/views/createProjectView.js',
 						function(ProjectItemView, CreateProjectView) {
@@ -44,7 +40,7 @@
 									.$el;
 								// $items = $items.add($Item);
 								$el.find("#task-container")
-									.append($Item);
+									.append($Item.find('.mainProjectItem'));
 							});
 
 							$el.find("#task-container")

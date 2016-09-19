@@ -41,8 +41,8 @@
 					})
 				$el.append($(div)
 					.find("#add-member"));
-				$el.append($(div)
-					.find(".dotted-intersection"));
+				// $el.append($(div)
+				// 	.find(".dotted-intersection"));
 				return _this;
 			}
 		});

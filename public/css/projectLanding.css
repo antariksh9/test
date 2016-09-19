@@ -1,6 +1,6 @@
 #main-task-container{
-	height:100%;
-	padding :0;
+	height:87%;
+	padding : 3%;
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
@@ -15,13 +15,15 @@
 	flex-direction: row;
 }
 #cross-head{
-	padding-right:  25px;
+	padding-right:  35px;
 	cursor:pointer;
-	font-size: 24px;
+	font-size: 21px;
+	font-weight: 300;
 }
 #page-head{
-	font-size: 24px;
-	padding: 16px;
+	font-weight: 300;
+    font-size: 22px;
+    padding : 12px 25px;
 }
 .dotted-intersection{
 	height:100%;
@@ -33,6 +35,9 @@
 }
 #add-member:hover{
 	border:1px solid darkgreen;
+}
+#add-member h7{
+	color : #d3d3d3;
 }
 #dropdown-status{
 	display:absolute;
@@ -60,10 +65,10 @@
 }
 #add-member{
 	display:flex;
-	padding : 0 4px 0 4px;
-	height : 12%;
+	padding : 2px 4px 4px 4px;
+	height : 15%;
 	width : 23%;
-	margin : 0 6px 0 6px;
+	margin : 2px 6px;
 	border : 1px solid lightgray;
 	box-sizing: border-box;
 	box-shadow: 0 1px 2px lightgray;
@@ -72,8 +77,9 @@
 }
 .add-member-actual{
 	display:flex;
-	padding : 0 4px 0 4px;
-	height : 12%;
+	padding : 2px 4px 4px 4px;
+	margin : 2px 6px !important;
+	height : 15%;
 	width : 100%;
 	border : 1px solid lightgray;
 	box-sizing: border-box;
@@ -93,12 +99,13 @@
 .task-box{
 	display:flex;
 	width:100%;
-	font-size: 12px;
+	height : 12%;
+	font-size: 11px;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-start;
 	padding: 12px 10px;
-	background-color: #F3EFEF;
+	background-color: #f6f6f6;
 	margin : 4px 0;
 	border-left: 2px solid green; 
 }
@@ -106,11 +113,13 @@
 	display:flex;
 	width:100%;
 	font-size: 6px;
+	width:100%;
+	height:12%;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding: 12px 10px;
-	background-color: #F3EFEF;
+	background-color: #f6f6f6;
 	margin : 4px 0;
 	color :#CCCCCC; 
 	cursor : pointer;
@@ -118,6 +127,13 @@
 .addtask-box:hover{
 	color:darkgreen;
 	border : 1px solid darkgreen;
+}
+.addtask-box h6{
+	font-size: 12px;
+}
+
+.addtask-box i{
+	font-size: 15px;
 }
 .task-box p{
 	padding:0;
@@ -128,29 +144,33 @@
 	border-radius: 6px;
 	padding:0px 6px ;
 	margin :0;
+	min-width: 22%;
 	border : 1px solid transparent;
 	font-size: 8px;
+	color:white;
 }
 .task-head-status{
 	display:flex;
 	margin:0;
 	padding:0;
 	border:0;
-	font-size: 14px;
+	font-size: 13px;
+	font-weight:500;
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
 }
 .task-head-status p{
-	border-right: 2px;
-	margin-right: 5px;
+	border-right: 4px;
+	margin-right: 7px;
+
 }
 #overlay-initial-task {
     display : block;
     position: fixed;
     top: 20%;
     left: 20%;
-    width: 30%;
+    width: 35%;
     height: auto;
     margin : auto;
     background-color: white;
